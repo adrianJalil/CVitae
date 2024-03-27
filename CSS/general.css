@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 0;
+}
+#cabecera {
+    background: rgb(0, 0, 0);
+    padding: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    text-align: center;
+}
+.titulo-1{
+    font-family: Times;
+    font-size: 40px;
+    color: white;
+}
+
+.row {
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.colum {
+    flex: 25%;
+    padding: 5px;
+}
+.colum img{
+    margin-top: 5px;
+}
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.img-container:hover img {
+    transform: rotateY(180deg);
+    filter: brightness(0); /* Hace que la imagen aparezca en negro */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    font-size: 18pt;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente negro */
+    padding: 10px;
+    transition: opacity 0.3s ease-in 0.8s;
+}
+
+.img-container:hover .text-overlay {
+    opacity: 1;
+}
+.img-container:not(:hover) .text-overlay {
+    transition: opacity 0s ease-out 0s; /* Transición rápida al no estar en hover */
+    animation: hideText 5s ease-out forwards; /* Animación para ocultar el texto después de 5 segundos */
+}
+
+
+#navegacion {
+    background: rgb(86, 86, 155);
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.container-menu{
+    width: 100%;
+    height: 58px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: rgb(86, 86, 155);
+}
+.menu{
+    width: 100%px;
+}
+nav{
+    height: 100%px;
+}
+nav > ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav  ul  li{
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    text-align: center;
+}
+nav > ul > li > a{
+    display: block;
+    text-decoration: none;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial;
+    color: white;
+}
+nav > ul > li > a:hover{
+    background-color: rgb(65, 177, 130);
+}
+
+nav ul li ul{
+    width: 200px; /* Largo del submenu*/
+    display: flex; 
+    flex-direction: column; /* organiza las opciones en una columna*/
+    background-color: white;
+    position: absolute; /* Relación triangulo submenu */
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    transition: all 300ms ease;
+    text-decoration: none;
+    z-index: 10;
+}
+nav ul li:hover ul{
+    visibility: visible; /* Visibilidad del submenu*/
+    opacity: 1;
+    top: 58px; /* Que tan alejado aparece el submenu*/
+}
+/* SUBMENU */
+nav ul li ul:before{ /* Triangulo submenu */
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid white;
+    position: absolute;
+    top: -12px;
+}
+nav ul li ul li a{
+    display: block;
+    float: left;
+    margin-left: -35px;
+    width: 200px;
+    color: rgb(76, 208, 153);
+    text-decoration: none;
+    text-align: center;
+    padding: 15px;
+}
+nav ul li ul li a:hover{
+    background-color: rgb(76, 208, 201);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 600px) {
+    .colum {
+        flex: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+    .colum {
+        flex: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    nav  ul  li{
+        list-style: none;
+        position: relative;
+        display: inline-block;
+        width: 96px;
+        text-align: center;
+    }
+    nav > ul > li > a{
+        display: block;
+        text-decoration: none;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        font-family: Arial;
+        font-size: 8pt;
+        color: white;
+    }
+}
